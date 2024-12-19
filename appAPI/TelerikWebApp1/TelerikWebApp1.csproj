@@ -137,20 +137,13 @@
     <Content Include="App_Data\RadCaptcha\X.wav" />
     <Content Include="App_Data\RadCaptcha\Y.wav" />
     <Content Include="App_Data\RadCaptcha\Z.wav" />
+    <Content Include="images\bar-chart.png" />
     <Content Include="MasterPage.Master" />
     <Content Include="MasterPageSingleMenu.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Default.aspx" />
     <Content Include="Grid.aspx" />
-    <Content Include="images\Chrysanthemum.jpg" />
-    <Content Include="images\Desert.jpg" />
-    <Content Include="images\Hydrangeas.jpg" />
-    <Content Include="images\Jellyfish.jpg" />
-    <Content Include="images\Koala.jpg" />
-    <Content Include="images\Lighthouse.jpg" />
     <Content Include="images\logo.png" />
-    <Content Include="images\Penguins.jpg" />
     <Content Include="images\Thumbnails\Chrysanthemum.jpg" />
     <Content Include="images\Thumbnails\Desert.jpg" />
     <Content Include="images\Thumbnails\Hydrangeas.jpg" />
@@ -159,8 +152,7 @@
     <Content Include="images\Thumbnails\Lighthouse.jpg" />
     <Content Include="images\Thumbnails\Penguins.jpg" />
     <Content Include="images\Thumbnails\Tulips.jpg" />
-    <Content Include="images\Tulips.jpg" />
-    <Content Include="ListView.aspx" />
+    <Content Include="Page2.aspx" />
     <Content Include="scripts\scripts.js" />
     <Content Include="styles\base.css" />
     <Content Include="styles\default.css" />
@@ -169,13 +161,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Article.cs" />
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Grid.aspx.cs">
       <DependentUpon>Grid.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -184,13 +169,6 @@
       <DependentUpon>Grid.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Image.cs" />
-    <Compile Include="ListView.aspx.cs">
-      <DependentUpon>ListView.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ListView.aspx.designer.cs">
-      <DependentUpon>ListView.aspx</DependentUpon>
-    </Compile>
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -204,6 +182,13 @@
     </Compile>
     <Compile Include="MasterPageSingleMenu.Master.designer.cs">
       <DependentUpon>MasterPageSingleMenu.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Page2.aspx.cs">
+      <DependentUpon>Page2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page2.aspx.designer.cs">
+      <DependentUpon>Page2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -254,7 +239,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

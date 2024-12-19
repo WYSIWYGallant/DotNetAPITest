@@ -1,14 +1,4 @@
-﻿;(function () {
-
-    var example = window.example = window.example || {};
-    var lightBox;
-
-    example.imageClicked = function (id) {
-        lightBox.set_currentItemIndex(parseInt(id, 10) - 1);
-        lightBox.show();
-    }
-
-    example.radLightBoxLoad = function (sender, eventArgs) {
-        lightBox = sender;
-    }
-})();
+﻿function openNewWindow(personId) {
+    var url = 'Page2.aspx?PersonID=' + personId;
+    window.open(url, '_blank', 'resizable=yes,width=800,height=600');
+}

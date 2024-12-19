@@ -112,23 +112,23 @@ namespace TelerikWebApp1
 
         protected void RadGrid1_ItemDataBound(object sender, GridItemEventArgs e)
         {
-            RadComboBox comboBox = e.Item.FindControl("RCB_City") as RadComboBox;
-            if (comboBox != null)
+            if (e.Item is GridDataItem dataItem)
             {
-                if (!(e.Item.DataItem is GridInsertionObject))
+                // Get the data item and determine if the button should be added
+                var data = (DataRowView)dataItem.DataItem;
+                int variableValue = (int)data["PersonType"];
+
+                // Create the ImageButton
+                ImageButton imgButton = new ImageButton
                 {
-                    comboBox.SelectedValue = (e.Item.DataItem as DataRowView)["City"].ToString();
-                }
-                comboBox.DataTextField = string.Empty;
-                //comboBox.DataSource = this.GetCities();
-                comboBox.DataBind();
-                if (this.RadGrid1.ResolvedRenderMode == RenderMode.Mobile)
+                    ImageUrl = "~/images/bar-chart.png", // Path to the image
+                    OnClientClick = $"openNewWindow({data["PersonID"]}); return false;"
+                };
+
+                // Conditionally add the button
+                if (variableValue == 1)
                 {
-                    (e.Item.FindControl("TB_Age") as WebControl).Enabled = false;
-                }
-                else
-                {
-                    ((e.Item as GridEditableItem)["Age"].Controls[0] as WebControl).Enabled = false;
+                    dataItem["DeleteColumn"].Controls.Add(imgButton);
                 }
             }
         }

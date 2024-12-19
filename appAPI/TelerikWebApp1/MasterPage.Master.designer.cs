@@ -42,15 +42,6 @@ namespace TelerikWebApp1
         protected global::Telerik.Web.UI.RadPageLayout MasterLayout;
 
         /// <summary>
-        /// RadMenu1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadMenu RadMenu1;
-
-        /// <summary>
         /// RadMenu2 control.
         /// </summary>
         /// <remarks>

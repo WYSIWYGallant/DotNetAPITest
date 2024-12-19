@@ -2,27 +2,9 @@
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <link href="styles/grid.css" rel="stylesheet" />
+    <script src="scripts/scripts.js" type="text/javascript"></script>
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <telerik:RadPageLayout runat="server" ID="JumbotronLayout" CssClass="jumbotron" GridType="Fluid">
-        <Rows>
-            <telerik:LayoutRow>
-                <Columns>
-                    <telerik:LayoutColumn Span="10" SpanMd="12" SpanSm="12" SpanXs="12">
-                        <telerik:RadButton runat="server" ID="RadButton0" Text="Button" ButtonType="SkinnedButton"></telerik:RadButton>
-                    </telerik:LayoutColumn>
-                    <telerik:LayoutColumn Span="2" HiddenMd="true" HiddenSm="true" HiddenXs="true">
-                        <img src="images/Thumbnails/Desert.jpg" />
-                    </telerik:LayoutColumn>
-                </Columns>
-            </telerik:LayoutRow>
-        </Rows>
-    </telerik:RadPageLayout>
-</asp:Content>
-
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
 
     <telerik:RadAjaxPanel ID="RadAjaxPanel1" ClientEvents-OnRequestStart="onRequestStart" runat="server" CssClass="grid_wrapper">
         <telerik:RadGrid ID="RadGrid1" runat="server" PageSize="10" PagerStyle-PageButtonCount="5"
@@ -37,15 +19,15 @@
                 InsertItemPageIndexAction="ShowItemOnFirstPage">
                 <CommandItemSettings ShowExportToCsvButton="true" ShowExportToExcelButton="true" ShowExportToPdfButton="true" ShowExportToWordButton="true" />
                 <Columns>
-                    <telerik:GridBoundColumn DataField="PersonName" HeaderText="Name" SortExpression="Name"
+                    <telerik:GridBoundColumn DataField="PersonName" HeaderText="Name" SortExpression="PersonName"
                         UniqueName="PersonName">
                         <HeaderStyle Width="150px" />
                     </telerik:GridBoundColumn>
-                    <telerik:GridNumericColumn DataField="PersonAge" HeaderText="Age" SortExpression="Age"
+                    <telerik:GridNumericColumn DataField="PersonAge" HeaderText="Age" SortExpression="PersonAge"
                         UniqueName="PersonAge">
                         <HeaderStyle Width="150px" />
                     </telerik:GridNumericColumn>
-                    <telerik:GridNumericColumn DataField="PersonType" HeaderText="Type" SortExpression="Type"
+                    <telerik:GridNumericColumn DataField="PersonType" HeaderText="Type" SortExpression="PersonType"
                         UniqueName="PersonType">
                         <HeaderStyle Width="150px" />
                     </telerik:GridNumericColumn>
