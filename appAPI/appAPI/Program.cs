@@ -20,9 +20,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseStaticFiles();
+app.UseRouting();
 app.UseAuthorization();
 
-app.MapControllers();
+app.MapFallbackToFile("/react-app/index.html"); // React fallback
+
+app.MapControllers(); // Map endpoints from controllers
 
 app.Run();

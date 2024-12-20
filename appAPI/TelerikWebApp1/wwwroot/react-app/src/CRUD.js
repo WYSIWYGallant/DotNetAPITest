@@ -9,7 +9,7 @@ function App() {
 
     // Fetch data from the API
     useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/users")
+        fetch("https://localhost:7203/api/Person")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch data");
@@ -44,7 +44,7 @@ function App() {
         } else {
             setData((prev) => [...prev, { ...formData, id: Date.now() }]);
         }
-        setFormData({ id: "", name: "", email: "" });
+        setFormData({ ID: "", Name: "", Age: "",PersonTypeID:"" });
         setIsEditing(false);
     };
 
@@ -66,19 +66,35 @@ function App() {
             {/* Create/Edit Form */}
             <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
                 <input
+                    type="number"
+                    name="ID"
+                    value={formData.ID}
+                    onChange={handleInputChange}
+                    placeholder="ID"
+                    required
+                />
+                <input
                     type="text"
-                    name="name"
-                    value={formData.name}
+                    name="Name"
+                    value={formData.Name}
                     onChange={handleInputChange}
                     placeholder="Name"
                     required
                 />
                 <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
+                    type="number"
+                    name="Age"
+                    value={formData.Age}
                     onChange={handleInputChange}
-                    placeholder="Email"
+                    placeholder="Age"
+                    required
+                />
+                <input
+                    type="number"
+                    name="PersonTypeID"
+                    value={formData.PersonTypeID}
+                    onChange={handleInputChange}
+                    placeholder="PersonTypeID"
                     required
                 />
                 <button type="submit">{isEditing ? "Update" : "Create"}</button>
@@ -100,16 +116,18 @@ function App() {
                         <tr>
                             <th style={{ border: "1px solid black", padding: "8px" }}>ID</th>
                             <th style={{ border: "1px solid black", padding: "8px" }}>Name</th>
-                            <th style={{ border: "1px solid black", padding: "8px" }}>Email</th>
+                            <th style={{ border: "1px solid black", padding: "8px" }}>Age</th>
+                            <th style={{ border: "1px solid black", padding: "8px" }}>Person Type</th>
                             <th style={{ border: "1px solid black", padding: "8px" }}>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {data.map((item) => (
                             <tr key={item.id}>
-                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.id}</td>
-                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.name}</td>
-                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.email}</td>
+                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.ID}</td>
+                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.Name}</td>
+                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.Age}</td>
+                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.PersonTypeID}</td>
                                 <td style={{ border: "1px solid black", padding: "8px" }}>
                                     <button onClick={() => handleEdit(item)}>Edit</button>
                                     <button onClick={() => handleDelete(item.id)}>Delete</button>

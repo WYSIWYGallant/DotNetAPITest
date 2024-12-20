@@ -141,7 +141,7 @@
     <Content Include="App_Data\RadCaptcha\Y.wav" />
     <Content Include="App_Data\RadCaptcha\Z.wav" />
     <Content Include="Components\GridComponent.js" />
-    <Content Include="CRUD.js" />
+    <Content Include="wwwroot\react-app\src\CRUD.js" />
     <Content Include="images\bar-chart.png" />
     <Content Include="MasterPage.Master" />
     <Content Include="MasterPageSingleMenu.Master" />
@@ -222,6 +222,10 @@
     <Content Include="wwwroot\react-app\build\static\js\main.e01af15f.js" />
     <Content Include="wwwroot\react-app\build\static\js\main.e01af15f.js.LICENSE.txt" />
     <Content Include="wwwroot\react-app\build\static\media\logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg" />
+    <Content Include="wwwroot\react-app\favicon.ico" />
+    <Content Include="wwwroot\react-app\index.html" />
+    <Content Include="wwwroot\react-app\logo192.png" />
+    <Content Include="wwwroot\react-app\logo512.png" />
     <Content Include="wwwroot\react-app\node_modules\%40alloc\quick-lru\index.js" />
     <Content Include="wwwroot\react-app\node_modules\%40ampproject\remapping\dist\remapping.mjs" />
     <Content Include="wwwroot\react-app\node_modules\%40ampproject\remapping\dist\remapping.umd.js" />
@@ -33079,6 +33083,8 @@
     <Content Include="wwwroot\react-app\package.json" />
     <Content Include="wwwroot\react-app\public\manifest.json" />
     <Content Include="wwwroot\react-app\README.md" />
+    <Content Include="wwwroot\react-app\asset-manifest.json" />
+    <Content Include="wwwroot\react-app\manifest.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -37191,7 +37197,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
