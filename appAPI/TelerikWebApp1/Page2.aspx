@@ -3,7 +3,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Graph View</title>
+   <script src="https://code.highcharts.com/highcharts.js"></script>
+   <script src="https://code.highcharts.com/modules/exporting.js"></script>
+   <script src="https://code.highcharts.com/modules/export-data.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -28,7 +33,8 @@
                     </Columns>
                 </MasterTableView>
             </telerik:RadGrid>
-        </div>
+            </div>
+            <asp:Literal ID="ChartLiteral" runat="server"></asp:Literal>
     </form>
 </body>
 </html>
