@@ -24693,7 +24693,6 @@
     <Content Include="styles\listView.css" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Article.cs" />
     <Compile Include="Grid.aspx.cs">
       <DependentUpon>Grid.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -24701,7 +24700,6 @@
     <Compile Include="Grid.aspx.designer.cs">
       <DependentUpon>Grid.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Image.cs" />
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -24716,6 +24714,8 @@
     <Compile Include="MasterPageSingleMenu.Master.designer.cs">
       <DependentUpon>MasterPageSingleMenu.Master</DependentUpon>
     </Compile>
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\PersonType.cs" />
     <Compile Include="Page1.aspx.cs">
       <DependentUpon>Page1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -37197,7 +37197,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

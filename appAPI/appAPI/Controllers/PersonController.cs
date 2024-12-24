@@ -19,7 +19,7 @@ namespace appAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Person>>> Get()
+        public async Task<ActionResult<IEnumerable<Person>>> GetPersons()
         {
             return await _context.Person.ToListAsync();
         }
@@ -36,15 +36,15 @@ namespace appAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Person>> Post([FromBody] Person person)
+        public async Task<ActionResult<Person>> CreatePerson([FromBody] Person person)
         {
             _context.Person.Add(person);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(Get), new { id = person.PersonID }, person);
         }
-
-        [HttpPut("{id},{name},{age},{type}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Person person)
+        //update person in database. pass id in url and person object in body
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdatePerson(int id, [FromBody] Person person)
         {
             if (id != person.PersonID)
             {
@@ -73,7 +73,7 @@ namespace appAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeletePerson(int id)
         {
             var person = await _context.Person.FindAsync(id);
             if (person == null)

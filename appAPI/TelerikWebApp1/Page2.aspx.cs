@@ -13,7 +13,7 @@ using DotNet.Highcharts.Helpers;
 using DotNet.Highcharts.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
+using TelerikWebApp1.Models;
 namespace TelerikWebApp1
 {
     public partial class Page2 : Page
@@ -25,31 +25,23 @@ namespace TelerikWebApp1
         {
             if (!IsPostBack)
             {
-                System.Diagnostics.Debug.WriteLine("Page_Load started.");
-
+                //pull personID from query string
                 if (int.TryParse(Request.QueryString["personID"], out int personID))
                 {
                     this.personID = personID;
                     await GetPerson(personID);
                 }
-
                 Highcharts chart = GenerateChart();
-                System.Diagnostics.Debug.WriteLine("Chart generated: " + (chart != null ? "Yes" : "No"));
-
                 string chartHtml = chart.ToHtmlString();
-                System.Diagnostics.Debug.WriteLine("Chart HTML: " + chartHtml);
 
                 if (ChartLiteral != null)
                 {
                     ChartLiteral.Text = chartHtml;
-                    System.Diagnostics.Debug.WriteLine("ChartLiteral updated.");
                 }
                 else
                 {
                     System.Diagnostics.Debug.WriteLine("ChartLiteral is null.");
                 }
-
-                System.Diagnostics.Debug.WriteLine("Page_Load completed.");
             }
         }
 
@@ -60,13 +52,9 @@ namespace TelerikWebApp1
                 // Set a timeout for the HTTP client
                 httpClient.Timeout = TimeSpan.FromSeconds(10);
 
-                // Log the start of the request
-                System.Diagnostics.Debug.WriteLine("Starting API request...");
 
                 var response = await httpClient.GetAsync("https://localhost:7203/api/Person/" + personID);
 
-                // Log the response
-                System.Diagnostics.Debug.WriteLine("API response received.");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -112,7 +100,7 @@ namespace TelerikWebApp1
         {
             RadGrid1.DataSource = ConvertToDataTable(this.Person);
         }
-
+        //Generate chart with random ints and dates
         private Highcharts GenerateChart()
         {
             List<int> randomInts = GenerateRandomInts(10, 0, 100000);

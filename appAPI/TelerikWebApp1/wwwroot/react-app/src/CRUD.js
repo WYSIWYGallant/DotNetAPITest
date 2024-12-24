@@ -4,7 +4,7 @@ function App() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [formData, setFormData] = useState({ id: "", name: "", email: "" });
+    const [formData, setFormData] = useState({ personID: 0, personName: "", personAge: "", personType:0});
     const [isEditing, setIsEditing] = useState(false);
 
     // Fetch data from the API
@@ -35,28 +35,80 @@ function App() {
     // Handle create or update operation
     const handleSubmit = (e) => {
         e.preventDefault();
+        const person = {
+            personID: formData.personID,
+            personName: formData.personName,
+            personAge: formData.personAge,
+            personType: formData.personType
+        };
+
         if (isEditing) {
+            fetch(`https://localhost:7203/api/Person/${person.personID}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(person),
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Failed to update data");
+                    }
+                })
+                .catch((err) => {
+                    setError(err.message);
+                });
             setData((prev) =>
                 prev.map((item) =>
-                    item.id === formData.id ? { ...item, ...formData } : item
+                    item.personID === formData.personID ? { ...item, ...formData } : item
                 )
             );
         } else {
-            setData((prev) => [...prev, { ...formData, id: Date.now() }]);
+            fetch("https://localhost:7203/api/Person", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(person),
+            })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to create person");
+                }
+                return response.json();
+            })
+            .then((newPerson) => {
+                setData((prev) => [...prev, newPerson]);
+            })
+            .catch((err) => {
+                setError(err.message);
+            });
         }
-        setFormData({ ID: "", Name: "", Age: "",PersonTypeID:"" });
+        setFormData({ personID: 0, personName: "", personAge: "", personType:0 });
         setIsEditing(false);
     };
 
     // Handle delete operation
     const handleDelete = (id) => {
-        setData((prev) => prev.filter((item) => item.id !== id));
+        fetch(`https://localhost:7203/api/Person/${id}`, {
+            method: "DELETE",
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Failed to delete data");
+            }
+            setData((prev) => prev.filter((item) => item.personID !== id));
+        })
+        .catch((err) => {
+            setError(err.message);
+        });
     };
 
     // Handle edit operation
     const handleEdit = (item) => {
         setFormData(item);
         setIsEditing(true);
+        
     };
 
     return (
@@ -65,36 +117,29 @@ function App() {
 
             {/* Create/Edit Form */}
             <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
-                <input
-                    type="number"
-                    name="ID"
-                    value={formData.ID}
-                    onChange={handleInputChange}
-                    placeholder="ID"
-                    required
-                />
+
                 <input
                     type="text"
-                    name="Name"
-                    value={formData.Name}
+                    name="personName"
+                    value={formData.personName}
                     onChange={handleInputChange}
                     placeholder="Name"
                     required
                 />
                 <input
                     type="number"
-                    name="Age"
-                    value={formData.Age}
+                    name="personAge"
+                    value={formData.personAge}
                     onChange={handleInputChange}
                     placeholder="Age"
                     required
                 />
                 <input
                     type="number"
-                    name="PersonTypeID"
-                    value={formData.PersonTypeID}
+                    name="personType"
+                    value={formData.personType}
                     onChange={handleInputChange}
-                    placeholder="PersonTypeID"
+                    placeholder="Person Type"
                     required
                 />
                 <button type="submit">{isEditing ? "Update" : "Create"}</button>
@@ -114,7 +159,6 @@ function App() {
                 >
                     <thead>
                         <tr>
-                            <th style={{ border: "1px solid black", padding: "8px" }}>ID</th>
                             <th style={{ border: "1px solid black", padding: "8px" }}>Name</th>
                             <th style={{ border: "1px solid black", padding: "8px" }}>Age</th>
                             <th style={{ border: "1px solid black", padding: "8px" }}>Person Type</th>
@@ -123,14 +167,13 @@ function App() {
                     </thead>
                     <tbody>
                         {data.map((item) => (
-                            <tr key={item.id}>
-                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.ID}</td>
-                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.Name}</td>
-                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.Age}</td>
-                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.PersonTypeID}</td>
+                            <tr key={item.personID}>
+                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.personName}</td>
+                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.personAge}</td>
+                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.personType}</td>
                                 <td style={{ border: "1px solid black", padding: "8px" }}>
                                     <button onClick={() => handleEdit(item)}>Edit</button>
-                                    <button onClick={() => handleDelete(item.id)}>Delete</button>
+                                    <button onClick={() => handleDelete(item.personID)}>Delete</button>
                                 </td>
                             </tr>
                         ))}
