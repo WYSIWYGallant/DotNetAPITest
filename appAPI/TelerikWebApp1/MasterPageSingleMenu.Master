@@ -15,21 +15,22 @@
     <form id="form1" runat="server">
         <telerik:RadScriptManager runat="server"></telerik:RadScriptManager>
         <div id="wrapper">
-            <a href="#" class="logo">
-                <img src="images/logo.png" alt="site logo" />
-            </a>
+            <div class="d-flex justify-content-center p-2">
+                <a href="#" class="logo">
+                    <img src="images/logo.png" alt="site logo" />
+                </a>
+            </div>
             <div class="header">
             </div>
-            <div>
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
-                </asp:ContentPlaceHolder>
+            <div class="d-flex justify-content-center">
+                <div style="width: 50%;">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
             </div>
             <hr style="margin-top: 40px" />
-            <div class="footer">
-               Footer: © 2024 Wyatt Gallant Univerus
-            </div>
         </div>
     </form>
 </body>

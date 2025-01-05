@@ -112,74 +112,70 @@ function App() {
     };
 
     return (
-        <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-            <h1>CRUD Operations Example</h1>
+        <div style={{ padding: "20px", fontFamily: "Arial, sans-serif", display: "flex", justifyContent: "center", height: "100vh" }}>
+            <div>
+                <h1>CRUD Operations Example</h1>
 
-            {/* Create/Edit Form */}
-            <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
+                {/* Create/Edit Form */}
+                <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
 
-                <input
-                    type="text"
-                    name="personName"
-                    value={formData.personName}
-                    onChange={handleInputChange}
-                    placeholder="Name"
-                    required
-                />
-                <input
-                    type="number"
-                    name="personAge"
-                    value={formData.personAge}
-                    onChange={handleInputChange}
-                    placeholder="Age"
-                    required
-                />
-                <input
-                    type="number"
-                    name="personType"
-                    value={formData.personType}
-                    onChange={handleInputChange}
-                    placeholder="Person Type"
-                    required
-                />
-                <button type="submit">{isEditing ? "Update" : "Create"}</button>
-            </form>
+                    <input
+                        type="text"
+                        name="personName"
+                        value={formData.personName}
+                        onChange={handleInputChange}
+                        placeholder="Name"
+                        required
+                    />
+                    <input
+                        type="number"
+                        name="personAge"
+                        value={formData.personAge}
+                        onChange={handleInputChange}
+                        placeholder="Age"
+                        required
+                    />
+                    <input
+                        type="number"
+                        name="personType"
+                        value={formData.personType}
+                        onChange={handleInputChange}
+                        placeholder="Person Type"
+                        required
+                    />
+                    <button type="submit">{isEditing ? "Update" : "Create"}</button>
+                </form>
 
-            {/* Loading, Error, or Data Table */}
-            {loading && <p>Loading data...</p>}
-            {error && <p style={{ color: "red" }}>Error: {error}</p>}
+                {/* Loading, Error, or Data Table */}
+                {loading && <p>Loading data...</p>}
+                {error && <p style={{ color: "red" }}>Error: {error}</p>}
 
-            {!loading && !error && (
-                <table
-                    style={{
-                        border: "1px solid black",
-                        borderCollapse: "collapse",
-                        width: "100%",
-                    }}
-                >
-                    <thead>
-                        <tr>
-                            <th style={{ border: "1px solid black", padding: "8px" }}>Name</th>
-                            <th style={{ border: "1px solid black", padding: "8px" }}>Age</th>
-                            <th style={{ border: "1px solid black", padding: "8px" }}>Person Type</th>
-                            <th style={{ border: "1px solid black", padding: "8px" }}>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map((item) => (
-                            <tr key={item.personID}>
-                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.personName}</td>
-                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.personAge}</td>
-                                <td style={{ border: "1px solid black", padding: "8px" }}>{item.personType}</td>
-                                <td style={{ border: "1px solid black", padding: "8px" }}>
-                                    <button onClick={() => handleEdit(item)}>Edit</button>
-                                    <button onClick={() => handleDelete(item.personID)}>Delete</button>
-                                </td>
+                {!loading && !error && (
+                    <table className="table table-striped" >
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Person Type</th>
+                                <th>Actions</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            )}
+                        </thead>
+                        <tbody>
+                            {data.map((item) => (
+                                <tr key={item.personID}>
+                                    <td>{item.personName}</td>
+                                    <td>{item.personAge}</td>
+                                    <td>{item.personType}</td>
+                                    <td>
+                                        <button className="btn btn-primary" onClick={() => handleEdit(item)}>Edit</button>
+                                        <button className="btn btn-danger" onClick={() => handleDelete(item.personID)}>Delete</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
+            </div>
         </div>
     );
 }
